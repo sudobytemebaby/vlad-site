@@ -3,47 +3,71 @@
 
 @custom-variant dark (&:is(.dark *));
 
+@font-face {
+  font-family: "Onest";
+  src: url("/fonts/Onest-VariableFont_wght.ttf");
+  font-weight: 100 900;
+  font-display: swap;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Geist Mono";
+  src: url("/fonts/GeistMono-VariableFont_wght.ttf");
+  font-weight: 100 900;
+  font-display: swap;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Fraunces";
+  src: url("/fonts/Fraunces.ttf");
+  font-weight: 100 900;
+  font-display: swap;
+  font-style: normal;
+}
+
 :root {
   --radius: 0.625rem;
-  
+
   /* Custom Palette based on original instructions */
   /* Light Theme */
   --background: #f8fafc; /* slate-50 */
   --foreground: #0f172a; /* slate-900 */
-  
-  --surface: #ffffff;    /* white - Custom variable from original design */
-  
+
+  --surface: #ffffff; /* white - Custom variable from original design */
+
   --card: #ffffff;
   --card-foreground: #0f172a;
-  
+
   --popover: #ffffff;
   --popover-foreground: #0f172a;
-  
-  --primary: #1d4ed8;    /* blue-700 */
+
+  --primary: #1d4ed8; /* blue-700 */
   --primary-foreground: #ffffff;
-  
-  --secondary: #f43f5e;  /* rose-500 */
+
+  --secondary: #f43f5e; /* rose-500 */
   --secondary-foreground: #ffffff;
-  
-  --muted: #64748b;      /* slate-500 - Adjusted for text */
+
+  --muted: #64748b; /* slate-500 - Adjusted for text */
   --muted-foreground: #64748b;
-  
-  --accent: #f1f5f9;     /* slate-100 */
+
+  --accent: #f1f5f9; /* slate-100 */
   --accent-foreground: #0f172a;
-  
+
   --destructive: #ef4444;
   --destructive-foreground: #ffffff;
-  
-  --border: #e2e8f0;     /* slate-200 */
+
+  --border: #e2e8f0; /* slate-200 */
   --input: #e2e8f0;
   --ring: #1d4ed8;
-  
+
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
   --chart-4: oklch(0.828 0.189 84.429);
   --chart-5: oklch(0.769 0.188 70.08);
-  
+
   --sidebar: oklch(0.984 0.003 247.858);
   --sidebar-foreground: oklch(0.129 0.042 264.695);
   --sidebar-primary: oklch(0.208 0.042 265.755);
@@ -58,40 +82,40 @@
   /* Dark Theme */
   --background: #020617; /* slate-950 */
   --foreground: #f8fafc; /* slate-50 */
-  
-  --surface: #0f172a;    /* slate-900 - Custom variable */
-  
+
+  --surface: #0f172a; /* slate-900 - Custom variable */
+
   --card: #0f172a;
   --card-foreground: #f8fafc;
-  
+
   --popover: #0f172a;
   --popover-foreground: #f8fafc;
-  
-  --primary: #60a5fa;    /* blue-400 */
+
+  --primary: #60a5fa; /* blue-400 */
   --primary-foreground: #0f172a;
-  
-  --secondary: #fb7185;  /* rose-400 */
+
+  --secondary: #fb7185; /* rose-400 */
   --secondary-foreground: #0f172a;
-  
-  --muted: #94a3b8;      /* slate-400 */
+
+  --muted: #94a3b8; /* slate-400 */
   --muted-foreground: #94a3b8;
-  
-  --accent: #1e293b;     /* slate-800 */
+
+  --accent: #1e293b; /* slate-800 */
   --accent-foreground: #f8fafc;
-  
+
   --destructive: #7f1d1d;
   --destructive-foreground: #f8fafc;
-  
-  --border: #1e293b;     /* slate-800 */
+
+  --border: #1e293b; /* slate-800 */
   --input: #1e293b;
   --ring: #60a5fa;
-  
+
   --chart-1: oklch(0.488 0.243 264.376);
   --chart-2: oklch(0.696 0.17 162.48);
   --chart-3: oklch(0.769 0.188 70.08);
   --chart-4: oklch(0.627 0.265 303.9);
   --chart-5: oklch(0.645 0.246 16.439);
-  
+
   --sidebar: oklch(0.208 0.042 265.755);
   --sidebar-foreground: oklch(0.984 0.003 247.858);
   --sidebar-primary: oklch(0.488 0.243 264.376);
@@ -107,18 +131,18 @@
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
-  
+
   /* Fonts */
-  --font-display: "Playfair Display", serif;
+  --font-display: "Fraunces", serif;
   --font-sans: "Onest", sans-serif;
   --font-mono: "Geist Mono", monospace;
 
   /* Colors mapping */
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  
+
   --color-surface: var(--surface); /* Restoring surface */
-  
+
   --color-card: var(--card);
   --color-card-foreground: var(--card-foreground);
   --color-popover: var(--popover);
@@ -157,8 +181,13 @@
   body {
     @apply bg-background text-foreground font-sans transition-colors duration-300;
   }
-  
-  h1, h2, h3, h4, h5, h6 {
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     @apply font-display text-foreground;
   }
 
@@ -215,27 +244,27 @@
   .animate-fade-in-up {
     animation: fadeInUp 0.8s ease-out forwards;
   }
-  
+
   .animate-fade-in-left {
     animation: fadeInLeft 0.8s ease-out forwards;
   }
-  
+
   .animate-fade-in-right {
     animation: fadeInRight 0.8s ease-out forwards;
   }
-  
+
   .animate-fade-in-up-fast {
     animation: fadeInUp 0.5s ease-out forwards;
   }
-  
+
   .animate-spin-slow {
     animation: spin 1s linear infinite;
   }
-  
+
   .animation-delay-100 {
     animation-delay: 0.2s;
   }
-  
+
   .animation-delay-200 {
     animation-delay: 0.2s;
   }

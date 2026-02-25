@@ -15,7 +15,7 @@
   <div class="absolute inset-0 bg-slate-950/75"></div>
   
   <!-- Gradient Overlay for better text readability -->
-  <div class="absolute inset-0 bg-gradient-to-r from-slate-950/90 via-slate-950/60 to-transparent"></div>
+  <div class="absolute inset-0 bg-gradient-o-r from-slate-950/90 via-slate-950/60 to-transparent"></div>
   
   <!-- Content -->
   <div class="relative z-10 h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -25,18 +25,14 @@
       <div class="flex-1 flex flex-col justify-center lg:pr-12 animate-fade-in-up">
         <div class="space-y-6">
           <div class="space-y-2">
-            <p class="text-primary-foreground/80 text-lg font-medium tracking-wide uppercase">
+            <p class="text-slate-400 text-lg font-medium tracking-wide uppercase">
               Нейрохирург высшей категории
             </p>
             <h1 class="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-display font-bold text-white leading-[0.95] tracking-tight">
-              Александр<br />
-              <span class="text-primary-foreground">Смирнов</span>
+              Владислав<br />
+              <span class="text-slate-300">Кельмаков</span>
             </h1>
           </div>
-          
-          <p class="text-xl sm:text-2xl text-white/90 font-light max-w-xl">
-            Кандидат медицинских наук
-          </p>
           
           <p class="text-base sm:text-lg text-white/70 max-w-lg leading-relaxed">
             {placeholder.doctor.experience}
@@ -59,7 +55,7 @@
           </div>
         </div>
       </div>
-      
+
       <!-- Right Side: CTA Buttons -->
       <div class="flex flex-col justify-center lg:pl-12 animate-fade-in-up animation-delay-200 mt-8 lg:mt-0">
         <div class="space-y-4 lg:space-y-6">
@@ -80,7 +76,7 @@
               href="#about"
               variant="outline"
               size="lg"
-              class="border-white/50 text-white hover:bg-white/10 hover:border-white text-base font-medium px-8 py-6 h-auto"
+              class="text-base font-medium px-8 py-6 h-auto"
             >
               Подробнее о враче
             </Button>
@@ -107,25 +103,3 @@
     </div>
   </div>
 </section>
-
-<style>
-  @keyframes fadeInUp {
-    from {
-      opacity: 0;
-      transform: translateY(30px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  .animate-fade-in-up {
-    animation: fadeInUp 1s ease-out forwards;
-  }
-  
-  .animation-delay-200 {
-    animation-delay: 0.2s;
-    opacity: 0;
-  }
-</style>

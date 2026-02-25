@@ -7,7 +7,6 @@
   
   let isSheetOpen = $state(false);
   let isScrolled = $state(false);
-  let isOnHero = $state(true);
 
   function closeSheet() {
     isSheetOpen = false;
@@ -19,38 +18,31 @@
 
   onMount(() => {
     const handleScroll = () => {
-      const scrollY = window.scrollY;
-      isScrolled = scrollY > 10;
-      // Hero section is 100vh, so check if we're still within it
-      isOnHero = scrollY < window.innerHeight - 100;
+      isScrolled = window.scrollY > 10;
     };
-    
     window.addEventListener('scroll', handleScroll);
-    handleScroll(); // Check initial position
     return () => window.removeEventListener('scroll', handleScroll);
   });
 </script>
 
 <nav
-  class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 {isOnHero 
-    ? 'bg-transparent border-transparent' 
-    : isScrolled 
-      ? 'bg-surface/95 backdrop-blur-md border-border shadow-sm' 
-      : 'bg-transparent border-transparent'}"
+  class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b {isScrolled
+    ? 'bg-surface/80 backdrop-blur-md border-border shadow-sm'
+    : 'bg-background border-border'}"
 >
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
     <!-- Logo -->
-    <a href="#hero" class="text-xl font-bold font-sans {isOnHero ? 'text-white' : 'text-foreground'}">
-      Др. Смирнов
+    <a href="#hero" class="text-xl font-bold font-sans text-foreground">
+     Владислав Кельмаков 
     </a>
 
     <!-- Desktop Navigation -->
     <div class="hidden md:flex items-center space-x-1">
-      <Button href="#about" variant="ghost" class="{isOnHero ? 'text-white/90 hover:text-white hover:bg-white/10' : 'text-muted-foreground hover:text-primary'}">О враче</Button>
-      <Button href="#services" variant="ghost" class="{isOnHero ? 'text-white/90 hover:text-white hover:bg-white/10' : 'text-muted-foreground hover:text-primary'}">Услуги</Button>
-      <Button href="#booking" variant="ghost" class="{isOnHero ? 'text-white/90 hover:text-white hover:bg-white/10' : 'text-muted-foreground hover:text-primary'}">Запись</Button>
-      <Button href="#blog" variant="ghost" class="{isOnHero ? 'text-white/90 hover:text-white hover:bg-white/10' : 'text-muted-foreground hover:text-primary'}">Блог</Button>
-      <Button href="#contacts" variant="ghost" class="{isOnHero ? 'text-white/90 hover:text-white hover:bg-white/10' : 'text-muted-foreground hover:text-primary'}">Контакты</Button>
+      <Button href="#about" variant="ghost">О враче</Button>
+      <Button href="#services" variant="ghost">Услуги</Button>
+      <Button href="#booking" variant="ghost">Запись</Button>
+      <Button href="#blog" variant="ghost">Блог</Button>
+      <Button href="#contacts" variant="ghost">Контакты</Button>
     </div>
 
     <!-- Actions -->
@@ -60,7 +52,7 @@
         size="icon"
         onclick={toggleTheme}
         aria-label="Toggle theme"
-        class="rounded-full {isOnHero ? 'text-white hover:text-white hover:bg-white/10' : ''}"
+        class="rounded-full"
       >
         {#if $theme === 'dark'}
           <Sun size={20} />
@@ -69,7 +61,7 @@
         {/if}
       </Button>
       
-      <Button href="#booking" variant="{isOnHero ? 'outline' : 'default'}" class="{isOnHero ? 'border-white text-white hover:bg-white hover:text-slate-950' : ''}">
+      <Button href="#booking">
         Записаться
       </Button>
     </div>
@@ -81,7 +73,7 @@
         size="icon"
         onclick={toggleTheme}
         aria-label="Toggle theme"
-        class="rounded-full {isOnHero ? 'text-white hover:text-white hover:bg-white/10' : ''}"
+        class="rounded-full"
       >
         {#if $theme === 'dark'}
           <Sun size={20} />
@@ -91,15 +83,11 @@
       </Button>
       
       <Sheet.Root bind:open={isSheetOpen}>
-        <Sheet.Trigger>
-          <Button
-            variant="ghost"
-            size="icon"
-            aria-label="Открыть меню"
-            class="{isOnHero ? 'text-white hover:text-white hover:bg-white/10' : ''}"
-          >
-            <Menu size={24} />
-          </Button>
+        <Sheet.Trigger
+          class="inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none ring-offset-background hover:bg-accent hover:text-accent-foreground h-10 w-10"
+          aria-label="Открыть меню"
+        >
+          <Menu size={24} />
         </Sheet.Trigger>
         <Sheet.Content side="right" class="w-[280px] sm:w-[350px]">
           <Sheet.Header>

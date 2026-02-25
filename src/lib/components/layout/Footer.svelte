@@ -6,7 +6,7 @@
   <div class="max-w-6xl mx-auto px-4">
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-sm mb-8">
       <div class="space-y-4">
-        <h3 class="text-xl font-display font-bold text-foreground">Др. Смирнов</h3>
+        <h3 class="text-xl font-display font-bold text-foreground">Владислав Кельмаков</h3>
         <p class="text-muted-foreground">Нейрохирург высшей категории</p>
       </div>
       <nav aria-label="Footer navigation" class="space-y-4">
@@ -18,7 +18,7 @@
         </ul>
       </nav>
       <div class="space-y-4 md:text-right">
-        <p class="text-muted-foreground">&copy; {new Date().getFullYear()} Др. Смирнов. Все права защищены.</p>
+        <p class="text-muted-foreground">&copy; {new Date().getFullYear()} Владислав Кельмаков. Все права защищены.</p>
         <a href="#" class="text-xs text-muted-foreground hover:text-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary/50 rounded">Политика конфиденциальности</a>
       </div>
     </div>

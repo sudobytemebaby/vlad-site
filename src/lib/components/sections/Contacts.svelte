@@ -65,7 +65,7 @@
             <Card.Title class="text-lg font-sans mb-1">Telegram</Card.Title>
             <Card.Description>
               <a href={placeholder.doctor.contacts.telegram} target="_blank" rel="noopener noreferrer" class="hover:text-primary transition-colors">
-                @smirnov_neuro
+                @kelmakov_neuro
               </a>
             </Card.Description>
           </div>

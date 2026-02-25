@@ -26,10 +26,12 @@
       <!-- Left Column: Bio & Key Stats -->
       <div class="space-y-8 animate-fade-in-left">
         <div class="space-y-4">
-          <h2 class="text-3xl lg:text-4xl font-display font-bold text-foreground relative inline-block">
-            О враче
-            <span class="absolute -bottom-2 left-0 w-12 h-1 bg-primary rounded-full"></span>
-          </h2>
+          <div class="inline-block">
+            <h2 class="text-3xl lg:text-4xl font-display font-bold text-foreground">
+              О враче
+            </h2>
+            <div class="h-1 bg-primary rounded-full mt-2"></div>
+          </div>
           <p class="text-lg text-foreground font-medium pt-2">
             {placeholder.doctor.specialization}
           </p>
