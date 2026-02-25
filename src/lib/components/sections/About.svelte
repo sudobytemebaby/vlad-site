@@ -2,6 +2,19 @@
   import { placeholder } from '$lib/data/placeholder';
   import * as Card from '$lib/components/ui/card';
   import { Badge } from '$lib/components/ui/badge';
+  import { Skeleton } from '$lib/components/ui/skeleton';
+  import { onMount } from 'svelte';
+
+  let imagesLoaded = $state<Record<number, boolean>>({});
+
+  onMount(() => {
+    // Simulate images loading (in real scenario, this would be actual image load events)
+    placeholder.doctor.gallery.forEach((_, index) => {
+      setTimeout(() => {
+        imagesLoaded[index] = true;
+      }, 500 + index * 200);
+    });
+  });
 </script>
 
 <section id="about" class="py-20 lg:py-28 bg-surface overflow-hidden">
@@ -66,21 +79,26 @@
 
     <!-- Bottom Section: Photo Gallery -->
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
-      {#each placeholder.doctor.gallery as photo}
+      {#each placeholder.doctor.gallery as photo, index}
         <Card.Root class="group relative aspect-[4/3] overflow-hidden border-0 shadow-sm hover:shadow-lg transition-all duration-300">
           <div class="absolute inset-0 bg-muted/10">
-            <!-- Placeholder Gradient/Icon for Image -->
-            <div class="absolute inset-0 bg-gradient-to-br from-muted/20 to-muted/5 group-hover:scale-105 transition-transform duration-700"></div>
-            <div class="absolute inset-0 flex items-center justify-center text-muted-foreground/20 group-hover:text-muted-foreground/30 transition-colors">
-              <svg class="w-16 h-16" fill="currentColor" viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
-            </div>
-            
-            <!-- Overlay Caption -->
-            <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent p-6 pt-12 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end">
-              <p class="text-white font-medium text-sm translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
-                {photo.caption}
-              </p>
-            </div>
+            {#if !imagesLoaded[index]}
+              <!-- Skeleton loading state -->
+              <Skeleton class="absolute inset-0 rounded-none" />
+            {:else}
+              <!-- Placeholder Gradient/Icon for Image -->
+              <div class="absolute inset-0 bg-gradient-to-br from-muted/20 to-muted/5 group-hover:scale-105 transition-transform duration-700"></div>
+              <div class="absolute inset-0 flex items-center justify-center text-muted-foreground/20 group-hover:text-muted-foreground/30 transition-colors">
+                <svg class="w-16 h-16" fill="currentColor" viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
+              </div>
+              
+              <!-- Overlay Caption -->
+              <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent p-6 pt-12 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end">
+                <p class="text-white font-medium text-sm translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
+                  {photo.caption}
+                </p>
+              </div>
+            {/if}
           </div>
         </Card.Root>
       {/each}
