@@ -1,6 +1,7 @@
 <script lang="ts">
   import { placeholder } from '$lib/data/placeholder';
   import { ExternalLink } from 'lucide-svelte';
+  import * as Card from '$lib/components/ui/card';
 </script>
 
 <section id="blog" class="py-20 bg-background">
@@ -21,22 +22,28 @@
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
       {#each placeholder.blog as post}
-        <article class="bg-surface rounded-2xl shadow-sm border border-border/50 p-6 flex flex-col h-full transition-all hover:shadow-md hover:-translate-y-1">
-          <header class="mb-4 text-xs font-mono text-muted/80">
-            {post.date}
-          </header>
-          <p class="text-sm lg:text-base text-foreground mb-6 line-clamp-4 flex-grow leading-relaxed">
-            {post.text}
-          </p>
-          <a
-            href={post.link}
-            target="_blank"
-            rel="noopener noreferrer"
-            class="mt-auto inline-flex items-center gap-2 text-sm font-medium text-primary hover:underline"
-          >
-            Читать в Telegram <ExternalLink size={14} />
-          </a>
-        </article>
+        <Card.Root class="flex flex-col h-full transition-all hover:shadow-md hover:-translate-y-1">
+          <Card.Header class="pb-2">
+            <time class="text-xs font-mono text-muted-foreground">
+              {post.date}
+            </time>
+          </Card.Header>
+          <Card.Content class="flex-grow">
+            <p class="text-sm lg:text-base line-clamp-4 leading-relaxed">
+              {post.text}
+            </p>
+          </Card.Content>
+          <Card.Footer class="pt-0">
+            <a
+              href={post.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-2 text-sm font-medium text-primary hover:underline"
+            >
+              Читать в Telegram <ExternalLink size={14} />
+            </a>
+          </Card.Footer>
+        </Card.Root>
       {/each}
     </div>
     

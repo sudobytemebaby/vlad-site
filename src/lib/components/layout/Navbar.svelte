@@ -6,13 +6,24 @@
   
   let isMenuOpen = $state(false);
   let isScrolled = $state(false);
+  let menuRef: HTMLDivElement | undefined = $state();
 
   function toggleMenu() {
     isMenuOpen = !isMenuOpen;
   }
 
+  function closeMenu() {
+    isMenuOpen = false;
+  }
+
   function toggleTheme() {
     theme.update((current) => (current === 'light' ? 'dark' : 'light'));
+  }
+
+  function handleClickOutside(event: MouseEvent) {
+    if (menuRef && !menuRef.contains(event.target as Node) && isMenuOpen) {
+      closeMenu();
+    }
   }
 
   onMount(() => {
@@ -20,7 +31,11 @@
       isScrolled = window.scrollY > 10;
     };
     window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    document.addEventListener('click', handleClickOutside);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      document.removeEventListener('click', handleClickOutside);
+    };
   });
 </script>
 
@@ -85,7 +100,9 @@
         variant="ghost"
         size="icon"
         onclick={toggleMenu}
-        aria-label="Menu"
+        aria-label={isMenuOpen ? "Закрыть меню" : "Открыть меню"}
+        aria-expanded={isMenuOpen}
+        aria-controls="mobile-menu"
       >
         {#if isMenuOpen}
           <X size={24} />
@@ -98,13 +115,13 @@
 
   <!-- Mobile Menu Dropdown -->
   {#if isMenuOpen}
-    <div class="md:hidden absolute top-full left-0 right-0 bg-surface border-b border-border shadow-lg p-4 flex flex-col space-y-2">
-      <Button href="#about" variant="ghost" class="w-full justify-start" onclick={toggleMenu}>О враче</Button>
-      <Button href="#services" variant="ghost" class="w-full justify-start" onclick={toggleMenu}>Услуги</Button>
-      <Button href="#booking" variant="ghost" class="w-full justify-start" onclick={toggleMenu}>Запись</Button>
-      <Button href="#blog" variant="ghost" class="w-full justify-start" onclick={toggleMenu}>Блог</Button>
-      <Button href="#contacts" variant="ghost" class="w-full justify-start" onclick={toggleMenu}>Контакты</Button>
-      <Button href="#booking" class="w-full" onclick={toggleMenu}>
+    <div id="mobile-menu" bind:this={menuRef} class="md:hidden absolute top-full left-0 right-0 bg-surface border-b border-border shadow-lg p-4 flex flex-col space-y-2">
+      <Button href="#about" variant="ghost" class="w-full justify-start" onclick={closeMenu}>О враче</Button>
+      <Button href="#services" variant="ghost" class="w-full justify-start" onclick={closeMenu}>Услуги</Button>
+      <Button href="#booking" variant="ghost" class="w-full justify-start" onclick={closeMenu}>Запись</Button>
+      <Button href="#blog" variant="ghost" class="w-full justify-start" onclick={closeMenu}>Блог</Button>
+      <Button href="#contacts" variant="ghost" class="w-full justify-start" onclick={closeMenu}>Контакты</Button>
+      <Button href="#booking" class="w-full" onclick={closeMenu}>
         Записаться
       </Button>
     </div>
