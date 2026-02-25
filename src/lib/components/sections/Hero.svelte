@@ -1,6 +1,7 @@
 <script lang="ts">
   import { placeholder } from '$lib/data/placeholder';
   import { User } from 'lucide-svelte';
+  import { Button } from '$lib/components/ui/button';
 </script>
 
 <section id="hero" class="relative py-20 lg:py-32 bg-background flex items-center justify-center min-h-[90vh]">
@@ -17,18 +18,21 @@
         {placeholder.doctor.experience}
       </p>
       <div class="flex flex-col sm:flex-row gap-4 pt-4">
-        <a
+        <Button
           href="#booking"
-          class="px-8 py-3 bg-primary text-white rounded-md text-base font-semibold hover:bg-primary/90 transition-all shadow-md transform hover:-translate-y-0.5 text-center"
+          size="lg"
+          class="text-base font-semibold shadow-md transform hover:-translate-y-0.5 transition-all"
         >
           Записаться на консультацию
-        </a>
-        <a
+        </Button>
+        <Button
           href="#about"
-          class="px-8 py-3 border border-border bg-surface text-foreground rounded-md text-base font-medium hover:bg-muted/5 transition-all shadow-sm transform hover:-translate-y-0.5 text-center"
+          variant="outline"
+          size="lg"
+          class="text-base font-medium bg-surface shadow-sm transform hover:-translate-y-0.5 transition-all"
         >
           Узнать больше
-        </a>
+        </Button>
       </div>
     </div>
 

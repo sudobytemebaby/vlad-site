@@ -1,5 +1,6 @@
 <script lang="ts">
   import { CheckCircle2 } from 'lucide-svelte';
+  import { Button } from '$lib/components/ui/button';
 
   let name = $state('');
   let phone = $state('');
@@ -111,10 +112,10 @@
           [ Turnstile капча ]
         </div>
 
-        <button
+        <Button
           type="submit"
           disabled={loading || !agreed}
-          class="w-full py-3.5 bg-primary text-white font-semibold rounded-lg hover:bg-primary/90 transition-all shadow-md active:scale-[0.98] disabled:opacity-70 disabled:pointer-events-none flex items-center justify-center gap-2 cursor-pointer disabled:cursor-not-allowed"
+          class="w-full h-12 text-base font-semibold shadow-md"
         >
           {#if loading}
             <span class="animate-spin w-5 h-5 border-2 border-current border-t-transparent rounded-full"></span>
@@ -122,7 +123,7 @@
           {:else}
             Отправить заявку
           {/if}
-        </button>
+        </Button>
       </form>
     {/if}
   </div>

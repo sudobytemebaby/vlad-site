@@ -2,6 +2,7 @@
   import { onMount } from 'svelte';
   import { Sun, Moon, Menu, X } from 'lucide-svelte';
   import { theme } from '$lib/stores/theme';
+  import { Button } from '$lib/components/ui/button';
   
   let isMenuOpen = $state(false);
   let isScrolled = $state(false);
@@ -35,51 +36,55 @@
     </a>
 
     <!-- Desktop Navigation -->
-    <div class="hidden md:flex items-center space-x-8">
-      <a href="#about" class="text-sm font-medium text-muted hover:text-primary transition-colors">О враче</a>
-      <a href="#services" class="text-sm font-medium text-muted hover:text-primary transition-colors">Услуги</a>
-      <a href="#booking" class="text-sm font-medium text-muted hover:text-primary transition-colors">Запись</a>
-      <a href="#blog" class="text-sm font-medium text-muted hover:text-primary transition-colors">Блог</a>
-      <a href="#contacts" class="text-sm font-medium text-muted hover:text-primary transition-colors">Контакты</a>
+    <div class="hidden md:flex items-center space-x-2">
+      <Button href="#about" variant="ghost" class="text-muted hover:text-primary">О враче</Button>
+      <Button href="#services" variant="ghost" class="text-muted hover:text-primary">Услуги</Button>
+      <Button href="#booking" variant="ghost" class="text-muted hover:text-primary">Запись</Button>
+      <Button href="#blog" variant="ghost" class="text-muted hover:text-primary">Блог</Button>
+      <Button href="#contacts" variant="ghost" class="text-muted hover:text-primary">Контакты</Button>
     </div>
 
     <!-- Actions -->
     <div class="hidden md:flex items-center space-x-4">
-      <button
+      <Button
+        variant="ghost"
+        size="icon"
         onclick={toggleTheme}
-        class="p-2 rounded-full hover:bg-muted/10 text-foreground transition-colors cursor-pointer"
         aria-label="Toggle theme"
+        class="rounded-full"
       >
         {#if $theme === 'dark'}
           <Sun size={20} />
         {:else}
           <Moon size={20} />
         {/if}
-      </button>
-      <a
-        href="#booking"
-        class="px-5 py-2 bg-primary text-white rounded-md text-sm font-medium hover:bg-primary/90 transition-colors shadow-sm"
-      >
+      </Button>
+      
+      <Button href="#booking">
         Записаться
-      </a>
+      </Button>
     </div>
 
     <!-- Mobile Menu Button -->
-    <div class="md:hidden flex items-center space-x-4">
-        <button
+    <div class="md:hidden flex items-center space-x-2">
+      <Button
+        variant="ghost"
+        size="icon"
         onclick={toggleTheme}
-        class="p-2 rounded-full hover:bg-muted/10 text-foreground transition-colors cursor-pointer"
         aria-label="Toggle theme"
+        class="rounded-full"
       >
         {#if $theme === 'dark'}
           <Sun size={20} />
         {:else}
           <Moon size={20} />
         {/if}
-      </button>
-      <button
+      </Button>
+      
+      <Button
+        variant="ghost"
+        size="icon"
         onclick={toggleMenu}
-        class="p-2 text-foreground hover:bg-muted/10 rounded-md transition-colors cursor-pointer"
         aria-label="Menu"
       >
         {#if isMenuOpen}
@@ -87,25 +92,21 @@
         {:else}
           <Menu size={24} />
         {/if}
-      </button>
+      </Button>
     </div>
   </div>
 
   <!-- Mobile Menu Dropdown -->
   {#if isMenuOpen}
-    <div class="md:hidden absolute top-full left-0 right-0 bg-surface border-b border-border shadow-lg p-4 flex flex-col space-y-4">
-      <a href="#about" class="text-base font-medium text-foreground hover:text-primary" onclick={toggleMenu}>О враче</a>
-      <a href="#services" class="text-base font-medium text-foreground hover:text-primary" onclick={toggleMenu}>Услуги</a>
-      <a href="#booking" class="text-base font-medium text-foreground hover:text-primary" onclick={toggleMenu}>Запись</a>
-      <a href="#blog" class="text-base font-medium text-foreground hover:text-primary" onclick={toggleMenu}>Блог</a>
-      <a href="#contacts" class="text-base font-medium text-foreground hover:text-primary" onclick={toggleMenu}>Контакты</a>
-      <a
-        href="#booking"
-        class="w-full text-center px-5 py-3 bg-primary text-white rounded-md text-base font-medium hover:bg-primary/90 transition-colors"
-        onclick={toggleMenu}
-      >
+    <div class="md:hidden absolute top-full left-0 right-0 bg-surface border-b border-border shadow-lg p-4 flex flex-col space-y-2">
+      <Button href="#about" variant="ghost" class="w-full justify-start" onclick={toggleMenu}>О враче</Button>
+      <Button href="#services" variant="ghost" class="w-full justify-start" onclick={toggleMenu}>Услуги</Button>
+      <Button href="#booking" variant="ghost" class="w-full justify-start" onclick={toggleMenu}>Запись</Button>
+      <Button href="#blog" variant="ghost" class="w-full justify-start" onclick={toggleMenu}>Блог</Button>
+      <Button href="#contacts" variant="ghost" class="w-full justify-start" onclick={toggleMenu}>Контакты</Button>
+      <Button href="#booking" class="w-full" onclick={toggleMenu}>
         Записаться
-      </a>
+      </Button>
     </div>
   {/if}
 </nav>
