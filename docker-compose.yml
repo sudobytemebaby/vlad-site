@@ -1,6 +1,6 @@
 services:
   app:
-    build: .
+    image: ghcr.io/sudobytemebaby/neurosurgeon-site:latest
     restart: unless-stopped
     expose:
       - "3000"
