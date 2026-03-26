@@ -1,38 +1,59 @@
 <script lang="ts">
   import { placeholder } from '$lib/data/placeholder';
-  import { formatPhoneNumber } from '$lib/utils';
-  import { Calendar, Phone } from 'lucide-svelte';
+  import { t } from '$lib/i18n/index.svelte';
+  import { MapPin, Phone, Clock } from '@lucide/svelte';
   import * as Card from '$lib/components/ui/card';
+  import { formatPhoneNumber } from '$lib/utils';
 </script>
 
-<section id="booking" class="py-20 bg-surface">
-  <div class="max-w-4xl mx-auto px-4 text-center">
-    <div class="mb-12">
-      <h2 class="text-3xl lg:text-4xl font-display font-bold text-foreground mb-4">
-        Записаться на консультацию
+<section id="booking" class="py-12 sm:py-16 lg:py-20 bg-surface">
+  <div class="max-w-6xl mx-auto px-4">
+    <div class="text-center mb-8 sm:mb-12">
+      <h2 class="text-2xl sm:text-3xl lg:text-4xl font-display font-bold text-foreground mb-3 sm:mb-4">
+        {t('booking.title')}
       </h2>
-      <p class="text-lg text-muted-foreground">
-        Выберите удобное время для приёма
+      <p class="text-sm sm:text-lg text-muted-foreground">
+        {t('booking.subtitle')}
       </p>
     </div>
 
-    <!-- Booking Widget Placeholder -->
-    <Card.Root class="border-2 border-dashed h-64 flex items-center justify-center mb-8 relative overflow-hidden group">
-      <div class="absolute inset-0 bg-primary/5 group-hover:bg-primary/10 transition-colors pointer-events-none"></div>
-      <Card.Content class="text-center p-6 space-y-4 max-w-sm mx-auto">
-        <Calendar class="w-12 h-12 text-muted-foreground/50 mx-auto" />
-        <p class="text-muted-foreground font-medium">
-          [ Здесь будет виджет онлайн-записи ПроДокторов / НаПоправку ]
-        </p>
-      </Card.Content>
-    </Card.Root>
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 mb-6 sm:mb-8">
+      <div class="space-y-4 sm:space-y-6">
+        <div class="flex items-start gap-3 sm:gap-4">
+          <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0 text-primary">
+            <MapPin size={18} />
+          </div>
+          <div class="flex-1 min-w-0">
+            <p class="text-base sm:text-lg font-sans font-semibold mb-0.5 sm:mb-1">{t('booking.address')}</p>
+            <p class="text-sm sm:text-base text-muted-foreground">{placeholder.doctor.contacts.address}</p>
+          </div>
+        </div>
 
-    <div class="inline-flex items-center gap-2 text-muted-foreground bg-background px-6 py-3 rounded-full border border-border shadow-sm">
-      <span class="text-sm">Или свяжитесь по телефону:</span>
-      <a href={`tel:${formatPhoneNumber(placeholder.doctor.contacts.phone)}`} class="font-mono font-semibold text-foreground hover:text-primary transition-colors">
-        {placeholder.doctor.contacts.phone}
-      </a>
-      <Phone size={16} class="ml-1" />
+        <div class="flex items-start gap-3 sm:gap-4">
+          <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0 text-primary">
+            <Clock size={18} />
+          </div>
+          <div class="flex-1 min-w-0">
+            <p class="text-base sm:text-lg font-sans font-semibold mb-0.5 sm:mb-1">{t('booking.hours')}</p>
+            <p class="text-sm sm:text-base text-muted-foreground">{placeholder.doctor.contacts.hours}</p>
+          </div>
+        </div>
+
+        <div class="inline-flex items-center gap-2.5 sm:gap-3 bg-background px-4 sm:px-6 py-3 sm:py-4 rounded-xl border border-border shadow-sm">
+          <Phone size={18} class="text-primary flex-shrink-0" />
+          <a href={`tel:${formatPhoneNumber(placeholder.doctor.contacts.phone)}`} class="font-mono font-semibold text-base sm:text-lg text-foreground hover:text-primary transition-colors">
+            {placeholder.doctor.contacts.phone}
+          </a>
+        </div>
+      </div>
+
+      <Card.Root class="h-48 sm:h-64 lg:h-auto lg:min-h-[300px] flex items-center justify-center relative overflow-hidden group">
+        <div class="absolute inset-0 bg-gradient-to-tr from-muted/5 to-transparent pointer-events-none"></div>
+        <div class="text-center space-y-2">
+          <MapPin size={40} class="text-muted-foreground/30 mx-auto" />
+          <Card.Description class="font-medium text-base sm:text-lg">{t('booking.map')}</Card.Description>
+        </div>
+      </Card.Root>
     </div>
   </div>
 </section>

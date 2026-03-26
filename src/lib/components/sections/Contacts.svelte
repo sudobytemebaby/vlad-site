@@ -1,95 +1,42 @@
 <script lang="ts">
   import { placeholder } from '$lib/data/placeholder';
+  import { t } from '$lib/i18n/index.svelte';
+  import { Phone, Mail, Send } from '@lucide/svelte';
   import { formatPhoneNumber } from '$lib/utils';
-  import { MapPin, Phone, Mail, Send, Clock } from 'lucide-svelte';
-  import * as Card from '$lib/components/ui/card';
 </script>
 
-<section id="contacts" class="py-20 bg-background">
+<section id="contacts" class="py-12 sm:py-16 lg:py-20 bg-background">
   <div class="max-w-6xl mx-auto px-4">
-    <div class="text-center mb-12">
-      <h2 class="text-3xl lg:text-4xl font-display font-bold text-foreground mb-4">
-        Контакты
+    <div class="text-center mb-8 sm:mb-12">
+      <h2 class="text-2xl sm:text-3xl lg:text-4xl font-display font-bold text-foreground mb-3 sm:mb-4">
+        {t('contacts.title')}
       </h2>
-      <p class="text-base text-muted-foreground">
-        Принимаю пациентов в Москве.
+      <p class="text-sm sm:text-base text-muted-foreground">
+        {t('contacts.subtitle')}
       </p>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
-      <!-- Contact Info -->
-      <div class="space-y-4">
-        <Card.Root class="flex items-start gap-4 border-0 shadow-none bg-transparent">
-          <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0 text-primary">
-            <MapPin size={20} />
-          </div>
-          <div class="flex-1">
-            <Card.Title class="text-lg font-sans mb-1">Адрес приема</Card.Title>
-            <Card.Description>{placeholder.doctor.contacts.address}</Card.Description>
-          </div>
-        </Card.Root>
-
-        <Card.Root class="flex items-start gap-4 border-0 shadow-none bg-transparent">
-          <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0 text-primary">
-            <Phone size={20} />
-          </div>
-          <div class="flex-1">
-            <Card.Title class="text-lg font-sans mb-1">Телефон</Card.Title>
-            <Card.Description>
-              <a href={`tel:${formatPhoneNumber(placeholder.doctor.contacts.phone)}`} class="hover:text-primary transition-colors font-mono">
-                {placeholder.doctor.contacts.phone}
-              </a>
-            </Card.Description>
-          </div>
-        </Card.Root>
-
-        <Card.Root class="flex items-start gap-4 border-0 shadow-none bg-transparent">
-          <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0 text-primary">
-            <Mail size={20} />
-          </div>
-          <div class="flex-1">
-            <Card.Title class="text-lg font-sans mb-1">Email</Card.Title>
-            <Card.Description>
-              <a href={`mailto:${placeholder.doctor.contacts.email}`} class="hover:text-primary transition-colors">
-                {placeholder.doctor.contacts.email}
-              </a>
-            </Card.Description>
-          </div>
-        </Card.Root>
-        
-        <Card.Root class="flex items-start gap-4 border-0 shadow-none bg-transparent">
-          <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0 text-primary">
-            <Send size={20} />
-          </div>
-          <div class="flex-1">
-            <Card.Title class="text-lg font-sans mb-1">Telegram</Card.Title>
-            <Card.Description>
-              <a href={placeholder.doctor.contacts.telegram} target="_blank" rel="noopener noreferrer" class="hover:text-primary transition-colors">
-                @kelmakov_neuro
-              </a>
-            </Card.Description>
-          </div>
-        </Card.Root>
-
-        <Card.Root class="flex items-start gap-4 border-0 shadow-none bg-transparent">
-          <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0 text-primary">
-            <Clock size={20} />
-          </div>
-          <div class="flex-1">
-            <Card.Title class="text-lg font-sans mb-1">Время работы</Card.Title>
-            <Card.Description>{placeholder.doctor.contacts.hours}</Card.Description>
-          </div>
-        </Card.Root>
-      </div>
-
-      <!-- Map Placeholder -->
-      <Card.Root class="h-96 md:h-full min-h-[300px] flex items-center justify-center relative overflow-hidden group">
-        <div class="absolute inset-0 bg-gradient-to-tr from-muted/5 to-transparent pointer-events-none"></div>
-        <div class="text-center space-y-2">
-          <MapPin size={48} class="text-muted-foreground/30 mx-auto" />
-          <Card.Description class="font-medium text-lg">[ Карта ]</Card.Description>
+    <div class="flex flex-col sm:flex-row sm:flex-wrap justify-center gap-4 sm:gap-8">
+      <a href="tel:{formatPhoneNumber(placeholder.doctor.contacts.phone)}" class="flex items-center gap-3 hover:text-primary transition-colors px-4 py-3 sm:p-0 rounded-xl sm:rounded-none bg-surface sm:bg-transparent">
+        <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary flex-shrink-0">
+          <Phone size={18} />
         </div>
-      </Card.Root>
+        <span class="font-mono text-sm sm:text-base">{placeholder.doctor.contacts.phone}</span>
+      </a>
+
+      <a href="mailto:{placeholder.doctor.contacts.email}" class="flex items-center gap-3 hover:text-primary transition-colors px-4 py-3 sm:p-0 rounded-xl sm:rounded-none bg-surface sm:bg-transparent">
+        <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary flex-shrink-0">
+          <Mail size={18} />
+        </div>
+        <span class="text-sm sm:text-base">{placeholder.doctor.contacts.email}</span>
+      </a>
+
+      <a href="{placeholder.doctor.contacts.telegram}" target="_blank" rel="noopener noreferrer" class="flex items-center gap-3 hover:text-primary transition-colors px-4 py-3 sm:p-0 rounded-xl sm:rounded-none bg-surface sm:bg-transparent">
+        <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary flex-shrink-0">
+          <Send size={18} />
+        </div>
+        <span class="text-sm sm:text-base">{placeholder.doctor.contacts.telegram.replace('https://t.me/', '@')}</span>
+      </a>
     </div>
   </div>
 </section>
