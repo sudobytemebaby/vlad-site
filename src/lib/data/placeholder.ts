@@ -17,7 +17,9 @@ export const placeholder = {
       { src: "/images/cool.jpg", position: "object-top" },
     ],
     contacts: {
-      phone: "+7 (383) 205-16-41",
+      phone: "+7 (923) 231-00-13",
+      phoneRaw: "+79232310013",
+      bookingPhone: "+7 (383) 205-16-41",
       email: "wk-11@mail.ru",
       address: "г. Новосибирск, ул. Добролюбова, 2/1 (Медика НСК)",
       hours: "Пн-Пт: 09:00 — 18:00",

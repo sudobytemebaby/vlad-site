@@ -1,0 +1,3 @@
+kelmakov.ru, www.kelmakov.ru {
+	reverse_proxy app:3000
+}

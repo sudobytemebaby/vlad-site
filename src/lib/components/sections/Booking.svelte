@@ -41,8 +41,8 @@
 
         <div class="inline-flex items-center gap-2.5 sm:gap-3 bg-background px-4 sm:px-6 py-3 sm:py-4 rounded-xl border border-border shadow-sm">
           <Phone size={18} class="text-primary flex-shrink-0" />
-          <a href={`tel:${formatPhoneNumber(placeholder.doctor.contacts.phone)}`} class="font-mono font-semibold text-base sm:text-lg text-foreground hover:text-primary transition-colors">
-            {placeholder.doctor.contacts.phone}
+          <a href={`tel:${formatPhoneNumber(placeholder.doctor.contacts.bookingPhone)}`} class="font-mono font-semibold text-base sm:text-lg text-foreground hover:text-primary transition-colors">
+            {placeholder.doctor.contacts.bookingPhone}
           </a>
         </div>
       </div>
