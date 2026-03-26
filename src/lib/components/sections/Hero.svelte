@@ -21,31 +21,31 @@
       <div class="flex-1 flex flex-col justify-center lg:pr-12 animate-fade-in-up">
         <div class="space-y-4 sm:space-y-6">
           <div class="space-y-1.5 sm:space-y-2">
-            <p class="text-slate-400 text-sm sm:text-lg font-medium tracking-wide uppercase">
+            <p class="text-slate-400 text-sm sm:text-lg font-medium">
               {t('hero.specialty')}
             </p>
-            <h1 class="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-display font-bold text-white leading-[0.95] tracking-tight">
+            <h1 class="font-serif italic text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-medium text-white">
               {t('hero.name')}<br />
-              <span class="text-slate-300">{t('hero.surname')}</span>
+              <span class="font-serif text-slate-300">{t('hero.surname')}</span>
             </h1>
           </div>
 
-          <p class="text-sm sm:text-lg text-white/70 max-w-lg leading-relaxed">
+          <p class="font-sans text-sm sm:text-lg text-white/70 max-w-lg leading-relaxed">
             {t('hero.experience')}
           </p>
 
-          <div class="flex flex-wrap gap-5 sm:gap-8 pt-2 sm:pt-4">
-            <div class="text-center">
-              <p class="text-3xl sm:text-5xl font-display font-bold text-white">15+</p>
-              <p class="text-xs sm:text-sm text-white/60 uppercase tracking-wider">{t('hero.yearsLabel')}</p>
+          <div class="flex gap-6 sm:gap-10 pt-3 sm:pt-4 border-t border-white/15">
+            <div>
+              <p class="text-2xl sm:text-3xl font-bold text-white leading-none">17+</p>
+              <p class="text-[0.65rem] sm:text-xs text-white/55 uppercase tracking-wider mt-1.5">{t('hero.yearsLabel')}</p>
             </div>
-            <div class="text-center">
-              <p class="text-3xl sm:text-5xl font-display font-bold text-white">1200+</p>
-              <p class="text-xs sm:text-sm text-white/60 uppercase tracking-wider">{t('hero.operationsLabel')}</p>
+            <div>
+              <p class="text-2xl sm:text-3xl font-bold text-white leading-none">2000+</p>
+              <p class="text-[0.65rem] sm:text-xs text-white/55 uppercase tracking-wider mt-1.5">{t('hero.operationsLabel')}</p>
             </div>
-            <div class="text-center">
-              <p class="text-3xl sm:text-5xl font-display font-bold text-white">{t('about.degreeValue')}</p>
-              <p class="text-xs sm:text-sm text-white/60 uppercase tracking-wider">{t('hero.degreeLabel')}</p>
+            <div>
+              <p class="text-2xl sm:text-3xl font-bold text-white leading-none">{t('about.degreeValue')}</p>
+              <p class="text-[0.65rem] sm:text-xs text-white/55 uppercase tracking-wider mt-1.5">{t('hero.degreeLabel')}</p>
             </div>
           </div>
         </div>

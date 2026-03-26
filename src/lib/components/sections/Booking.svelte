@@ -2,14 +2,14 @@
   import { placeholder } from '$lib/data/placeholder';
   import { t } from '$lib/i18n/index.svelte';
   import { MapPin, Phone, Clock } from '@lucide/svelte';
-  import * as Card from '$lib/components/ui/card';
   import { formatPhoneNumber } from '$lib/utils';
+  import YandexMap from '$lib/components/YandexMap.svelte';
 </script>
 
 <section id="booking" class="py-12 sm:py-16 lg:py-20 bg-surface">
   <div class="max-w-6xl mx-auto px-4">
     <div class="text-center mb-8 sm:mb-12">
-      <h2 class="text-2xl sm:text-3xl lg:text-4xl font-display font-bold text-foreground mb-3 sm:mb-4">
+      <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-foreground mb-3 sm:mb-4">
         {t('booking.title')}
       </h2>
       <p class="text-sm sm:text-lg text-muted-foreground">
@@ -47,13 +47,12 @@
         </div>
       </div>
 
-      <Card.Root class="h-48 sm:h-64 lg:h-auto lg:min-h-[300px] flex items-center justify-center relative overflow-hidden group">
-        <div class="absolute inset-0 bg-gradient-to-tr from-muted/5 to-transparent pointer-events-none"></div>
-        <div class="text-center space-y-2">
-          <MapPin size={40} class="text-muted-foreground/30 mx-auto" />
-          <Card.Description class="font-medium text-base sm:text-lg">{t('booking.map')}</Card.Description>
-        </div>
-      </Card.Root>
+      <YandexMap
+        coordinates={placeholder.doctor.contacts.coordinates}
+        markerTitle={t('doctor.fullName')}
+        markerSubtitle={placeholder.doctor.contacts.address}
+        class="h-56 sm:h-64 lg:h-auto lg:min-h-[300px] rounded-lg border border-border shadow-sm"
+      />
     </div>
   </div>
 </section>

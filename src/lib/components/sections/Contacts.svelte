@@ -8,7 +8,7 @@
 <section id="contacts" class="py-12 sm:py-16 lg:py-20 bg-background">
   <div class="max-w-6xl mx-auto px-4">
     <div class="text-center mb-8 sm:mb-12">
-      <h2 class="text-2xl sm:text-3xl lg:text-4xl font-display font-bold text-foreground mb-3 sm:mb-4">
+      <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-foreground mb-3 sm:mb-4">
         {t('contacts.title')}
       </h2>
       <p class="text-sm sm:text-base text-muted-foreground">
@@ -31,12 +31,14 @@
         <span class="text-sm sm:text-base">{placeholder.doctor.contacts.email}</span>
       </a>
 
-      <a href="{placeholder.doctor.contacts.telegram}" target="_blank" rel="noopener noreferrer" class="flex items-center gap-3 hover:text-primary transition-colors px-4 py-3 sm:p-0 rounded-xl sm:rounded-none bg-surface sm:bg-transparent">
-        <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary flex-shrink-0">
-          <Send size={18} />
-        </div>
-        <span class="text-sm sm:text-base">{placeholder.doctor.contacts.telegram.replace('https://t.me/', '@')}</span>
-      </a>
+      {#if placeholder.doctor.contacts.telegram}
+        <a href="{placeholder.doctor.contacts.telegram}" target="_blank" rel="noopener noreferrer" class="flex items-center gap-3 hover:text-primary transition-colors px-4 py-3 sm:p-0 rounded-xl sm:rounded-none bg-surface sm:bg-transparent">
+          <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary flex-shrink-0">
+            <Send size={18} />
+          </div>
+          <span class="text-sm sm:text-base">{placeholder.doctor.contacts.telegram.replace('https://t.me/', '@')}</span>
+        </a>
+      {/if}
     </div>
   </div>
 </section>

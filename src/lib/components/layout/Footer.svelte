@@ -7,7 +7,7 @@
   <div class="max-w-6xl mx-auto px-4">
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 text-sm mb-6 sm:mb-8">
       <div class="space-y-2 sm:space-y-4">
-        <h3 class="text-lg sm:text-xl font-display font-bold text-foreground">{t('doctor.fullName')}</h3>
+        <h3 class="text-lg sm:text-xl font-bold text-foreground">{t('doctor.fullName')}</h3>
         <p class="text-muted-foreground text-sm">{t('footer.neurosurgeon')}</p>
       </div>
       <nav aria-label="Footer navigation" class="space-y-2 sm:space-y-4">
@@ -20,7 +20,7 @@
       </nav>
       <div class="space-y-2 sm:space-y-4 md:text-right">
         <p class="text-muted-foreground text-xs sm:text-sm">&copy; {new Date().getFullYear()} {t('doctor.fullName')}. {t('footer.copyright')}</p>
-        <a href="#" class="text-xs text-muted-foreground hover:text-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary/50 rounded">{t('footer.policy')}</a>
+        <span class="text-xs text-muted-foreground">{t('footer.policy')}</span>
       </div>
     </div>
     <Separator class="my-4 sm:my-8" />

@@ -16,7 +16,7 @@
 <section id="services" class="py-12 sm:py-16 lg:py-24 bg-background">
   <div class="max-w-6xl mx-auto px-4">
     <div class="text-center max-w-2xl mx-auto mb-8 sm:mb-12 lg:mb-16">
-      <h2 class="text-2xl sm:text-3xl lg:text-4xl font-display font-bold text-foreground mb-3 sm:mb-4">
+      <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-foreground mb-3 sm:mb-4">
         {t('services.title')}
       </h2>
       <p class="text-sm sm:text-base text-muted-foreground leading-relaxed">

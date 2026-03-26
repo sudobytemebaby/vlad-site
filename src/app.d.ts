@@ -8,6 +8,16 @@ declare global {
 		// interface PageState {}
 		// interface Platform {}
 	}
+
+	// Yandex Maps JS API 3.0
+	// eslint-disable-next-line no-var
+	var ymaps3: {
+		ready: Promise<void>;
+		import(module: string): Promise<any>;
+		YMap: any;
+		YMapDefaultSchemeLayer: any;
+		YMapDefaultFeaturesLayer: any;
+	};
 }
 
 export {};
