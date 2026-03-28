@@ -1,6 +1,6 @@
 <script lang="ts">
   import { placeholder } from '$lib/data/placeholder';
-  import { t } from '$lib/i18n/index.svelte';
+  import { m } from '$lib/paraglide/messages.js';
   import { MapPin, Phone, Clock } from '@lucide/svelte';
   import { formatPhoneNumber } from '$lib/utils';
   import YandexMap from '$lib/components/YandexMap.svelte';
@@ -10,10 +10,10 @@
   <div class="max-w-6xl mx-auto px-4">
     <div class="text-center mb-8 sm:mb-12">
       <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-foreground mb-3 sm:mb-4">
-        {t('booking.title')}
+        {m.booking_title()}
       </h2>
       <p class="text-sm sm:text-lg text-muted-foreground">
-        {t('booking.subtitle')}
+        {m.booking_subtitle()}
       </p>
     </div>
 
@@ -24,7 +24,7 @@
             <MapPin size={18} />
           </div>
           <div class="flex-1 min-w-0">
-            <p class="text-base sm:text-lg font-sans font-semibold mb-0.5 sm:mb-1">{t('booking.address')}</p>
+            <p class="text-base sm:text-lg font-sans font-semibold mb-0.5 sm:mb-1">{m.booking_address()}</p>
             <p class="text-sm sm:text-base text-muted-foreground">{placeholder.doctor.contacts.address}</p>
           </div>
         </div>
@@ -34,7 +34,7 @@
             <Clock size={18} />
           </div>
           <div class="flex-1 min-w-0">
-            <p class="text-base sm:text-lg font-sans font-semibold mb-0.5 sm:mb-1">{t('booking.hours')}</p>
+            <p class="text-base sm:text-lg font-sans font-semibold mb-0.5 sm:mb-1">{m.booking_hours()}</p>
             <p class="text-sm sm:text-base text-muted-foreground">{placeholder.doctor.contacts.hours}</p>
           </div>
         </div>
@@ -49,7 +49,7 @@
 
       <YandexMap
         coordinates={placeholder.doctor.contacts.coordinates}
-        markerTitle={t('doctor.fullName')}
+        markerTitle={m.doctor_full_name()}
         markerSubtitle={placeholder.doctor.contacts.address}
         class="h-56 sm:h-64 lg:h-auto lg:min-h-[300px] rounded-lg border border-border shadow-sm"
       />

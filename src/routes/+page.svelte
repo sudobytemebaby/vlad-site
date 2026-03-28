@@ -3,17 +3,15 @@
   import About from '$lib/components/sections/About.svelte';
   import Services from '$lib/components/sections/Services.svelte';
   import Booking from '$lib/components/sections/Booking.svelte';
-  import Contacts from '$lib/components/sections/Contacts.svelte';
-  import { t } from '$lib/i18n/index.svelte';
+  import { m } from '$lib/paraglide/messages.js';
 </script>
 
 <svelte:head>
-  <title>{t('page.title')}</title>
-  <meta name="description" content="{t('page.description')}">
+  <title>{m.page_title()}</title>
+  <meta name="description" content={m.page_description()}>
 </svelte:head>
 
 <Hero />
 <About />
 <Services />
 <Booking />
-<Contacts />

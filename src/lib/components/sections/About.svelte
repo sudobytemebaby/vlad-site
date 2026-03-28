@@ -1,19 +1,29 @@
 <script lang="ts">
   import { placeholder } from '$lib/data/placeholder';
-  import { t } from '$lib/i18n/index.svelte';
+  import { m } from '$lib/paraglide/messages.js';
   import * as Card from '$lib/components/ui/card';
   import * as Carousel from '$lib/components/ui/carousel';
   import { Badge } from '$lib/components/ui/badge';
 
-  const factsKeys = ['about.yearsExp', 'about.operations'];
-  const timelineKeys = [
-    { key: 'about.higherEdu', descKey: 'about.higherEduDesc' },
-    { key: 'about.residency', descKey: 'about.residencyDesc' },
-    { key: 'about.candidate', descKey: 'about.candidateDesc' },
-    { key: 'about.training', descKey: 'about.trainingDesc' },
-    { key: 'about.presentTitle', descKey: 'about.presentDesc', yearKey: 'about.present' },
+  const facts = [
+    () => m.about_years_exp(),
+    () => m.about_operations(),
   ];
-  const photoKeys = ['about.photo1', 'about.photo2', 'about.photo3', 'about.photo4'];
+
+  const timeline = [
+    { title: () => m.about_higher_edu(), desc: () => m.about_higher_edu_desc() },
+    { title: () => m.about_residency(), desc: () => m.about_residency_desc() },
+    { title: () => m.about_candidate(), desc: () => m.about_candidate_desc() },
+    { title: () => m.about_training(), desc: () => m.about_training_desc() },
+    { title: () => m.about_present_title(), desc: () => m.about_present_desc(), year: () => m.about_present() },
+  ];
+
+  const photos = [
+    () => m.about_photo1(),
+    () => m.about_photo2(),
+    () => m.about_photo3(),
+    () => m.about_photo4(),
+  ];
 </script>
 
 <section id="about" class="py-12 sm:py-16 lg:py-28 bg-surface overflow-hidden">
@@ -25,33 +35,33 @@
         <div class="space-y-3 sm:space-y-4">
           <div class="inline-block">
             <h2 class="text-2xl sm:text-3xl lg:text-4xl font-serif italic font-bold text-foreground">
-              {t('about.title')}
+              {m.about_title()}
             </h2>
             <div class="h-1 bg-primary rounded-full mt-2"></div>
           </div>
           <p class="text-base sm:text-lg text-foreground font-medium pt-1 sm:pt-2">
-            {t('about.specialty')}
+            {m.about_specialty()}
           </p>
         </div>
 
         <p class="text-sm sm:text-base text-muted-foreground leading-relaxed">
-          {t('about.bio')}
+          {m.about_bio()}
         </p>
 
         <div class="grid grid-cols-2 sm:grid-cols-4 gap-y-5 sm:gap-y-0 sm:divide-x sm:divide-border pt-4 sm:pt-6 border-t border-border">
           {#each placeholder.doctor.facts as fact, i}
             <div class="text-center sm:px-4 sm:first:pl-0 sm:last:pr-0">
               <p class="text-2xl font-bold text-primary leading-none">{fact.value}</p>
-              <p class="text-[0.65rem] text-muted-foreground uppercase tracking-wider mt-1.5">{t(factsKeys[i])}</p>
+              <p class="text-[0.65rem] text-muted-foreground uppercase tracking-wider mt-1.5">{facts[i]()}</p>
             </div>
           {/each}
           <div class="text-center sm:px-4">
-            <p class="text-2xl font-bold text-primary leading-none">{t('about.degreeValue')}</p>
-            <p class="text-[0.65rem] text-muted-foreground uppercase tracking-wider mt-1.5">{t('about.degree')}</p>
+            <p class="text-2xl font-bold text-primary leading-none">{m.about_degree_value()}</p>
+            <p class="text-[0.65rem] text-muted-foreground uppercase tracking-wider mt-1.5">{m.about_degree()}</p>
           </div>
           <div class="text-center sm:px-4 sm:last:pr-0">
-            <p class="text-2xl font-bold text-primary leading-none">{t('about.categoryValue')}</p>
-            <p class="text-[0.65rem] text-muted-foreground uppercase tracking-wider mt-1.5">{t('about.category')}</p>
+            <p class="text-2xl font-bold text-primary leading-none">{m.about_category_value()}</p>
+            <p class="text-[0.65rem] text-muted-foreground uppercase tracking-wider mt-1.5">{m.about_category()}</p>
           </div>
         </div>
       </div>
@@ -63,13 +73,13 @@
 
             <div class="space-y-0.5 sm:space-y-1">
               <Badge variant="secondary" class="font-mono text-xs mb-1">
-                {timelineKeys[i].yearKey ? t(timelineKeys[i].yearKey!) : item.year}
+                {timeline[i].year ? timeline[i].year!() : item.year}
               </Badge>
               <h3 class="text-base sm:text-lg font-bold text-foreground">
-                {t(timelineKeys[i].key)}
+                {timeline[i].title()}
               </h3>
               <p class="text-xs sm:text-sm text-muted-foreground leading-relaxed max-w-sm">
-                {t(timelineKeys[i].descKey)}
+                {timeline[i].desc()}
               </p>
             </div>
           </div>
@@ -87,12 +97,12 @@
             <Card.Root class="group relative aspect-4/3 overflow-hidden border-0 shadow-sm hover:shadow-lg transition-all duration-300">
               <img
                 src={photo.src}
-                alt={t(photoKeys[index])}
+                alt={photos[index]()}
                 class="absolute inset-0 w-full h-full object-cover {photo.position} group-hover:scale-105 transition-transform duration-700"
               />
               <div class="absolute inset-x-0 bottom-0 bg-linear-to-t from-black/70 via-black/30 to-transparent p-4 pt-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                 <p class="text-white font-medium text-xs sm:text-sm translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
-                  {t(photoKeys[index])}
+                  {photos[index]()}
                 </p>
               </div>
             </Card.Root>

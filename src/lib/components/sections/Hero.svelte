@@ -1,6 +1,6 @@
 <script lang="ts">
   import { placeholder } from '$lib/data/placeholder';
-  import { t } from '$lib/i18n/index.svelte';
+  import { m } from '$lib/paraglide/messages.js';
   import { ChevronDown } from '@lucide/svelte';
   import { Button } from '$lib/components/ui/button';
   import { formatPhoneNumber } from '$lib/utils';
@@ -22,30 +22,30 @@
         <div class="space-y-4 sm:space-y-6">
           <div class="space-y-1.5 sm:space-y-2">
             <p class="text-slate-400 text-sm sm:text-lg font-medium">
-              {t('hero.specialty')}
+              {m.hero_specialty()}
             </p>
             <h1 class="font-serif italic text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-medium text-white">
-              {t('hero.name')}<br />
-              <span class="font-serif text-slate-300">{t('hero.surname')}</span>
+              {m.hero_name()}<br />
+              <span class="font-serif text-slate-300">{m.hero_surname()}</span>
             </h1>
           </div>
 
           <p class="font-sans text-sm sm:text-lg text-white/70 max-w-lg leading-relaxed">
-            {t('hero.experience')}
+            {m.hero_experience()}
           </p>
 
           <div class="flex gap-6 sm:gap-10 pt-3 sm:pt-4 border-t border-white/15">
             <div>
               <p class="text-2xl sm:text-3xl font-bold text-white leading-none">17+</p>
-              <p class="text-[0.65rem] sm:text-xs text-white/55 uppercase tracking-wider mt-1.5">{t('hero.yearsLabel')}</p>
+              <p class="text-[0.65rem] sm:text-xs text-white/55 uppercase tracking-wider mt-1.5">{m.hero_years_label()}</p>
             </div>
             <div>
               <p class="text-2xl sm:text-3xl font-bold text-white leading-none">2000+</p>
-              <p class="text-[0.65rem] sm:text-xs text-white/55 uppercase tracking-wider mt-1.5">{t('hero.operationsLabel')}</p>
+              <p class="text-[0.65rem] sm:text-xs text-white/55 uppercase tracking-wider mt-1.5">{m.hero_operations_label()}</p>
             </div>
             <div>
-              <p class="text-2xl sm:text-3xl font-bold text-white leading-none">{t('about.degreeValue')}</p>
-              <p class="text-[0.65rem] sm:text-xs text-white/55 uppercase tracking-wider mt-1.5">{t('hero.degreeLabel')}</p>
+              <p class="text-2xl sm:text-3xl font-bold text-white leading-none">{m.about_degree_value()}</p>
+              <p class="text-[0.65rem] sm:text-xs text-white/55 uppercase tracking-wider mt-1.5">{m.hero_degree_label()}</p>
             </div>
           </div>
         </div>
@@ -54,7 +54,7 @@
       <div class="flex flex-col justify-center lg:pl-12 animate-fade-in-up animation-delay-100 mt-6 lg:mt-0">
         <div class="space-y-3 lg:space-y-6">
           <p class="text-white/60 text-sm uppercase tracking-widest mb-2 hidden lg:block">
-            {t('hero.ctaLabel')}
+            {m.hero_cta_label()}
           </p>
 
           <div class="flex flex-col sm:flex-row lg:flex-col gap-3 sm:gap-4">
@@ -63,7 +63,7 @@
               size="lg"
               class="bg-white text-slate-950 hover:bg-white/90 text-sm sm:text-base font-semibold shadow-lg px-6 sm:px-8 py-4 sm:py-6 h-auto"
             >
-              {t('hero.bookBtn')}
+              {m.hero_book_btn()}
             </Button>
 
             <Button
@@ -72,13 +72,13 @@
               size="lg"
               class="text-sm sm:text-base font-medium px-6 sm:px-8 py-4 sm:py-6 h-auto"
             >
-              {t('hero.moreBtn')}
+              {m.hero_more_btn()}
             </Button>
           </div>
 
           <div class="hidden lg:block pt-8 text-center">
             <p class="text-white/40 text-sm">
-              {t('hero.orCall')}<br />
+              {m.hero_or_call()}<br />
               <a href="tel:{formatPhoneNumber(placeholder.doctor.contacts.phone)}" class="text-white/80 hover:text-white font-mono text-lg">
                 {placeholder.doctor.contacts.phone}
               </a>
